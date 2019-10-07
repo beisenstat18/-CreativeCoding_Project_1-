@@ -2,42 +2,60 @@ var x= 0;
 var y=0;
 var r= 255;
 var b=215;
-var g=0;
-var size=10;
-var positionX= 300;
+var a=20;
+var positionX=300;
 var positionY=400;
-var layer=1;
+var secondpositionX=300;
+var secondpositionY=300;
+var thirdpositionY=400;
+var rainbow;
+var version=1;
 
 function setup() {
 	createCanvas(600,400);
-
+	rainbow=[color('#c0392b'), color('#e67e22'), color('#f1c40f'), color('#2ecc71'), color('#3498db'), color('#8e44ad')];
 }
 
 function draw() {
-	
-	r=map(x,0,600,255,255);
-	b=map(x,0,600,96,255);
-	background(r,b,0);
-	size++;
+	if (version==1){
+	r=map(x,0,600,100,255);
+	b=map(y,0,600,255,0);
+	background(r,0,b);
+	x++;
+
+
 	positionY--;
+	translate(positionX,positionY);
 	noStroke();
-	fill('#FEE2F1');
+	fill('#FF018E');
 	shape_1();
-	//y++;
-	//x++;
-	//shape_2();
-	//if (positionY==0){
-	//nofill();
-		//shape_2();
-	
+
+	secondpositionY--;
+	translate(secondpositionX,secondpositionY);
+	noStroke();
+	fill('#81DDF6');
+	shape_1();
+
+	thirdpositionY--;
+	translate(-550,thirdpositionY);
+	noStroke();
+	fill('#78FF87');
+	shape_1();
+	}	
 }
 
-function shape_1 (){
-	ellipse(positionX, positionY, size, size);
+function shape_1(){
 
-function shape_2(){
-	arc(x,y, 40, 40, PI+QUARTER_PI, PIE);
-
-}	
-	
+		for (var i=0;i<5;i++){
+		ellipse(0,-60,120,120);
+		rotate(radians(73));
+	}
+		fill('#FFDD45')
+		ellipse (0,0,40,40);
+}
+function mousePressed(){
+	version++;
+	if (version>6){
+		version=1;
+	}
 }
