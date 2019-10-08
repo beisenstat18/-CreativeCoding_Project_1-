@@ -74,7 +74,6 @@ function shape_1(){
 		fill('#FFDD45')
 		ellipse (0,0,40,40);
 }
-
 function mousePressed(){
 	version++;
 	if (version>2){
